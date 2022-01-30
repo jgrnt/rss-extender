@@ -1,24 +1,16 @@
 <?php
+include(__DIR__ . "/heise.php");
 
-$config['author']		= "Lars Formella";
-$config['author_url']		= "http://www.larsformella.de/portfolio/programme-software/rss-extender/";
 $config['url']			= "http://www.heise.de/tp/news-atom.xml";
-$config['base_url']		= "http://www.heise.de";
-$config['content']		= array("#<!--googleon: index-->(.*)<!--googleoff: index-->#Uis", 1);
-$config['search']		= array("#<span class=\"bildunterschrift\">.*<\/span>#Uis",
-								"#<span class=\"source\">.*<\/span>#Uis",
-								"#<h1>.*<\/h1>#Uis",
-								"#<!-- RSPEAK_STOP -->#Uis",
-								"#<!-- RSPEAK_START -->#Uis",
-								"#<content_ad_possible>#Uis",
-								"#<script.*>.*<\/script>#Uis");
-$config['replace']		= array("",
-								"",
-								"",
-								"",
-								"",
-								"",
-								"",
-								"");
+$config['content']  = array("#(<figure class=\"aufmacherbild\">|<p class=\"lead beitraganriss\">)(.*)<footer class=\"beitragsfooter\">#Uis", 2);
+#$config['split']    = array("#<a href=\"([^\"]*)\" class=\"page next\" rel=\"next\">Nächste Seite</a>#Uis", 1); #split does not work here due to crippled website. we would need guid and 1st match here to create link to second page
+$config['search'] = array("#srcset=\".*>#Uis",
+  "#<aside class=\"akwa-ad-container\">.*</aside>#Uis");
+$config['replace'] = array(">",
+  "");
 
+$config['test_urls'] = array("http://www.heise.de/tp/artikel/47/47452/1.html",
+  "http://www.heise.de/tp/news/Erdgas-EU-Kommission-will-Notfallplaene-3112645.html",
+  "http://heise.de/-3455305"
+                            );
 ?>

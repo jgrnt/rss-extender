@@ -96,10 +96,16 @@ class Feed
 	 */
 	public $useFeedContentTag = "";
 
+  /**
+   * List of URLs of this feeds on which tests should run to verify content regex
+   * @param array
+   */
+  public $testUrls = array();
+
 	/**
 	 * @param array $config
 	 */
-	public function Feed (array $config)
+	public function __construct (array $config)
 	{
 		if (array_key_exists("author", $config))
 		{
@@ -138,6 +144,10 @@ class Feed
 		if (array_key_exists("use_feed", $config))
 		{
 			$this->useFeedContentTag = $config["use_feed"];
+		}
+		if (array_key_exists("test_urls", $config))
+		{
+			$this->testUrls = $config["test_urls"];
 		}
 	}
 }
