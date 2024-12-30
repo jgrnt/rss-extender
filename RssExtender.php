@@ -272,7 +272,7 @@ class RssExtender
 
 				foreach ($contentNode->attributes as $attrName => $attrNode)
 				{
-					@$newNode->setAttribute($attrName, $attrNode);
+					@$newNode->setAttribute($attrName, $attrNode->$value);
 				}
 
 				$domElement->replaceChild($newNode, $contentNode);
