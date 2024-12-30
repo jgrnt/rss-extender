@@ -4,8 +4,9 @@ $config['author']		= "Lars Formella";
 $config['author_url']	= "http://www.larsformella.de/portfolio/programme-software/rss-extender/";
 $config['url']			= "http://www.heise.de/newsticker/heise-atom.xml";
 $config['base_url']		= "http://www.heise.de";
-$config['content'] = array("#<article[^>]*>(.*)<\/article>#Uis", 1);
+$config['content'] = array("#<article[^>]*>(.*)<\/article>#is", 1);
 $config['search']	= array(
+  "#<!-- RSPEAK_STOP -->.*<!-- RSPEAK_START -->#Uis",
   "#<h1.*>.*<\/h1>#Uis",
   "#<script.*>.*<\/script>#Uis",
   "#<noscript>.*<\/noscript>#Uis",
@@ -30,6 +31,7 @@ $config['search']	= array(
   "#http://www.heise.de//#Uis"
   );
 $config['replace'] = array(
+  "",
   "",
   "",
   "",
